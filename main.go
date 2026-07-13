@@ -22,7 +22,10 @@ func main() {
 	case "stats":
 		fmt.Println("stats: not implemented yet")
 	case "list":
-		fmt.Println("list: not implemented yet")
+		if err := cmdList(os.Args[2:]); err != nil{
+			fmt.Fprintln(os.Stderr, "momentum:", err)
+			os.Exit(1)
+		}
 	case "graph":
 		fmt.Println("graph: not implemented yet")
 	default:

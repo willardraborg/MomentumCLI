@@ -46,3 +46,34 @@ func cmdLog(args []string) error{
 	fmt.Printf("logged %s: %q (%.1f hours)\n", today, note, hours)
 	return nil
 }
+
+func cmdList(args []string) error{
+	n := 10
+	if len(args) == 1{
+		parsed, err := strconv.Atoi(args[0])
+		if err != nil || parsed < 1{
+			return fmt.Errorf("list: number must be a positive integer, got %q", args[0])
+		}
+		n = parsed
+	}
+
+	entries, err := loadEntries()
+	if err != nil{
+		return err
+	}
+	if len(entries) == 0{
+		fmt.Println("no entries yet, log your first day with: momentum log \"<note>\" <hours>")
+		return nil
+	}
+
+	start := len(entries) - n
+	if start < 0 {
+		start = 0
+	}
+	for _, e := range entries[start:] {
+		fmt.Printf("%s %4.1f h %s\n", e.Date, e.Hours, e.Note)
+	}
+	return nil
+}
+
+
