@@ -13,7 +13,10 @@ func main() {
 
 	switch os.Args[1] {
 	case "log":
-		fmt.Println("log: not implemented yet")
+		if err := cmdLog(os.Args[2:]); err != nil{
+			fmt.Fprintln(os.Stderr, "momentum:", err)
+			os.Exit(1)
+		}
 	case "streak":
 		fmt.Println("streak: not implemented yet")
 	case "stats":
