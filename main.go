@@ -31,7 +31,7 @@ func main() {
 
 func printUsage() {
 	fmt.Println("usage: momentum <command>")
-	fmt.Println("\n")
+	fmt.Println()
 	fmt.Println(" log: \"<note>\" <hours>   log today as shipped")
 	fmt.Println(" streak: show current streak")
 	fmt.Println(" stats: show total days and hours")

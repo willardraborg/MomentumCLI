@@ -9,9 +9,9 @@ import
 )
 
 type Entry struct{
-	Date string 'json:"date"'
-	Note string 'json:"note"'
-	Hours float64 'json:"hours"'
+	Date string `json:"date"`
+	Note string `json:"note"`
+	Hours float64 `json:"hours"`
 }
 
 func dataPath() (string, error){
@@ -22,7 +22,7 @@ func dataPath() (string, error){
 	return filepath.Join(home, ".momentum.json"), nil
 }
 
-func loadEntires() ([] Entry, error){
+func loadEntries() ([] Entry, error){
 	path, err := dataPath()
 	if err != nil{
 		return nil, err
